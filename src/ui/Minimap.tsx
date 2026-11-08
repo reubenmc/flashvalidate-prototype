@@ -84,7 +84,7 @@ export function Minimap() {
               stroke="white"
               strokeWidth={0.5}
               className="dot-pop"
-              style={{ animationDelay: stage === 'validating' ? `${i * 45}ms` : '0ms' }}
+              style={{ animationDelay: stage === 'validating' ? `${i * 95}ms` : '0ms' }}
             />
           ))}
 
