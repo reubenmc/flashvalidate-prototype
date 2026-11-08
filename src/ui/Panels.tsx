@@ -17,7 +17,7 @@ function ModelCard() {
         </div>
         <div className="min-w-0">
           <div className="text-[14px] font-semibold text-zinc-900">Yard Detector v2.3</div>
-          <div className="text-[12px] text-zinc-500">YOLO-based · trucks, trailers · deployed 12 sites</div>
+          <div className="text-[12px] text-zinc-500">Vision transformer · trucks, trailers · deployed 12 sites</div>
         </div>
         <Pill tone="green" className="ml-auto">
           Production
