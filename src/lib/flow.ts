@@ -71,21 +71,21 @@ export async function generate() {
   app.setOrbit(false)
   app.setGenPhase('depth')
   app.setStage('generating')
-  await sleep(1800)
+  await sleep(900)
   // lift pixels into 3D Gaussians
   genAnim.progress = 0
   genAnim.fade = 1
   app.setMeshesVisible(false)
   app.setGenPhase('lift')
-  const lift = tween(5200, (t) => (genAnim.progress = t))
-  await sleep(1500)
-  app.requestCamera(OVERVIEW, 5.6)
+  const lift = tween(2600, (t) => (genAnim.progress = t))
+  await sleep(750)
+  app.requestCamera(OVERVIEW, 2.8)
   await lift
   app.setMeshesVisible(true)
   app.setGenPhase('labels')
-  await tween(1300, (t) => (genAnim.fade = 1 - t))
+  await tween(650, (t) => (genAnim.fade = 1 - t))
   genAnim.fade = 0
-  await sleep(500)
+  await sleep(250)
   app.setGenPhase('done')
   useApp.setState({ view: 'overview' })
   app.setStage('explore')
@@ -96,7 +96,7 @@ export async function runValidation() {
   const app = useApp.getState()
   app.setStage('validating')
   app.setProgress(0)
-  await tween(5600, (t) => app.setProgress(t))
+  await tween(2800, (t) => app.setProgress(t))
   // Start the flight first so the previous scenario's results never flash
   app.goToView('B', 1.8)
   app.setStage('validated')
@@ -141,7 +141,7 @@ export async function generateTraining() {
     const [px, , pz] = base.camera.position
     return { ...base, boxes, camera: { ...base.camera, position: [px, h, pz] as [number, number, number], heightM: h } }
   })
-  const remaining = Math.max(0, 5200 - (performance.now() - started))
+  const remaining = Math.max(0, 2600 - (performance.now() - started))
   const p0 = useApp.getState().progress
   await tween(remaining, (t) => app.setProgress(p0 + (1 - p0) * t))
   app.setTrainingImages(images)
